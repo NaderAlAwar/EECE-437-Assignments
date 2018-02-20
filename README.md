@@ -1,1 +1,1 @@
-# EECE-437-FSM
+# EECE-437-Assignments
