@@ -3,41 +3,38 @@
 #include <vector>
 class Condition {
 public:
-	Condition();
-	~Condition();
-	Condition(bool(*func)(std::vector<int>));
+
+	/**
+	 * @brief Constructor takes as input a function pointer
+	 * @param[in]  func  Function pointer
+	 */
+	Condition(bool (*func)(std::vector<int>));
+
+	/**
+	 * @brief Copy constructor
+	 * @param n An instance of condition
+	 */
 	Condition(const Condition &);
+
+	/**
+	 * @brief Function that evaluates condition
+	 * @details Evaluates condition and returns the result of that evaluation.
+	 * @return Boolean
+	 */
 	bool isTrue();
+
+	/**
+	 * ???????????????
+	 * 
+	 * Maybe the variables were not of type int? i.e. multiple data types
+	 */
 	void updateVariables(std::vector<int>);
+
 private:
 	bool(*function)(std::vector<int>);
 	std::vector<int> variables;
 
 };
 
-Condition::Condition() {
 
-}
-
-Condition::~Condition() {
-
-}
-
-Condition::Condition(bool(*func)(std::vector<int>)) {
-	function = func;
-}
-
-Condition::Condition(const Condition &newCondition) {
-	function = newCondition.function;
-	variables = newCondition.variables;
-}
-
-
-bool Condition::isTrue() {
-	return function(variables);
-}
-
-void Condition::updateVariables(std::vector<int> inputs) {
-	variables = inputs;
-}
 #endif
