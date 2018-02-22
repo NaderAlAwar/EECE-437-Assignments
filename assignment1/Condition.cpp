@@ -1,4 +1,14 @@
-Condition::Condition(bool (*func)(std::vector<int>)) {
+#include "Condition.h"
+
+Condition::Condition() {
+
+}
+
+//Condition::~Condition() {
+//
+//}
+
+Condition::Condition(bool(*func)(std::vector<int>)) {
 	function = func;
 }
 
