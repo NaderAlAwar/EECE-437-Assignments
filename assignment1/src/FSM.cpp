@@ -1,7 +1,8 @@
 #include "FSM.h"
 
-FSM::FSM(const std::vector<State> & newStates, const State & start, const std::vector<Transition> & newTrans, const std::vector<int> & newVars) {
-	myStates = newStates;
+FSM::FSM(const States & newStates, const State & start, const std::vector<Transition> & newTrans, const std::vector<int> & newVars) {
+	
+	myStates = new States(newStates);
 	startState = start;
 	myTransitions = newTrans;
 	myVariables = newVars;	
@@ -27,7 +28,7 @@ void FSM::printPorts() {
 
 void FSM::printStates() {
 	std::cout << "The states are: " << std::endl;
-	for (std::vector<State>::iterator it = myStates.begin(); it != myStates.end(); ++it) {
+	for (std::vector<State>::iterator it = myStates->states.begin(); it != myStates->states.end(); ++it) {
 		std::cout << it->getValue() << std::endl;
 	}
 }

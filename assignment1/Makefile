@@ -1,5 +1,5 @@
 CC := g++
-SRC_DIR := src
+SRC_DIR := updated_src
 BUILD_DIR := build
 TARGET := bin/run
 SRC_EXT := cpp
@@ -20,7 +20,8 @@ clean:
 	@echo " Cleaning...";
 	@echo " $(RM) -r $(BUILD_DIR) $(TARGET)"; $(RM) -r $(BUILD_DIR) $(TARGET)
 
-
+tests:
+	$(CC) $(CFLAGS) test/*.$(SRC_EXT) $(INC) -o bin/test
 
 
 

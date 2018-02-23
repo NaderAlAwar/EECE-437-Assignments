@@ -1,6 +1,5 @@
-#ifndef TRANSITION_H
-#define TRANSITION_H
-#include "State.h"
+
+#include "States.h"
 #include "Port.h"
 #include "Action.h"
 #include "Condition.h"
@@ -41,5 +40,3 @@ private:
 	Action action;
 };
 
-
-#endif

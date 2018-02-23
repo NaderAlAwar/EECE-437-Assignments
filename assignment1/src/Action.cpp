@@ -15,7 +15,7 @@ Action::Action(const Action &newAction) {
 
 std::vector<int> Action::executeAction() {
 	function(variables);
-	return variables;							//returns variables to FSM to update each condition and action
+	return variables; //!< 	Returns variables to FSM to update each condition and action
 }
 
 void Action::updateVariables(std::vector<int> inputs) {

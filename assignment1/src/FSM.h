@@ -1,21 +1,35 @@
-#ifndef FSM_H
-#define FSM_H
 
-#include "State.h"
+
+#include "States.h"
 #include "Transition.h"
 #include <vector>
 #include "Port.h"
 
 
 class FSM {
+
+//same as assignment pdf. might need to add variables and ports to args.
+//if not, then we should get them from inside the transitions
+//when this constructor is called (and supposing we added variables to it), 
+//the variables should be copied into each Action and Condition inside the transitions
+
 public:
-	//FSM();
-	//~FSM();
-	FSM(const std::vector<State> &, const State &, const std::vector<Transition> &, const std::vector<int> &);
-												//same as assignment pdf. might need to add variables and ports to args.
-												//if not, then we should get them from inside the transitions
-												//when this constructor is called (and supposing we added variables to it), 
-												//the variables should be copied into each Action and Condition inside the transitions
+
+	//TODO: Generalize input variables to accept custom struct from user
+
+	/**
+	 *
+	 * @brief FSM constructor, where the inputs are the ones mentioned in the mathematical 
+	 * definition of an FSM to maximize generality in its usage.
+	 *
+	 *param[in] States Input states to FSM
+	 *param[in] State Initial state
+	 *param[in] Transitions Input transitions to FSM
+	 *param[in] Variables Input variables (integers) to FSM
+	 *
+	 */
+	FSM(const States &, const State &, const std::vector<Transition> &, const std::vector<int> &);
+												
 	void printPorts();
 	void printStates();
 	void drawFSM();
@@ -23,7 +37,7 @@ public:
 	void reset(const State &);
 
 private:
-	std::vector<State> myStates;
+	States *myStates;
 	std::vector<Transition> myTransitions;
 	State startState, currentSate;
 	std::vector<int> myVariables;
@@ -31,5 +45,4 @@ private:
 	int steps;
 };
 
-#endif // !FSM_H
 
