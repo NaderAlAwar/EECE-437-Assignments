@@ -1,9 +1,16 @@
 #include <vector>
 #include <string>
+#include <iostream>
 
-// Forward declaration
+
+/**
+ * @brief Forward declaration of States
+ */
 class States;
 
+/**
+ * @brief State class
+ */
 class State{
 
 public:

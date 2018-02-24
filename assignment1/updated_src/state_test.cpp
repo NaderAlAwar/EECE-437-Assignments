@@ -12,5 +12,7 @@ int main(){
 
 	cout<<x.states[1].get_value()<<endl;
 
+	x.print_states();
+
 	return 0;
 }
