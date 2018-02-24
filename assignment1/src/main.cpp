@@ -1,13 +1,13 @@
-// #include <iostream>
-// #include "Port.h"
-// #include "States.h"
-// #include <string>
-// #include <vector>
-// #include "Condition.h"
-// #include "Action.h"
-// #include "Transition.h"
-// #include "Transitions.h"
-// #include "FSM.h"
+#include <iostream>
+#include "Port.h"
+#include "States.h"
+#include <string>
+#include <vector>
+#include "Condition.h"
+#include "Action.h"
+#include "Transition.h"
+#include "Transitions.h"
+#include "FSM.h"
 
 // using namespace std;
 

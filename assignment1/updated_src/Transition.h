@@ -1,3 +1,6 @@
+#ifndef TRANSITION_H
+#define TRANSITION_H
+
 #include "State.h"
 #include "Port.h"
 #include "Action.h"
@@ -34,6 +37,39 @@ public:
 	Action *get_action();
 
 	std::string get_port();
+	Transitions operator+(Transition t);
 
+	State start_state, end_state;
+
+
+private:
+	Port port;
+	Condition condition;
+	Action action;
 
 };
+
+class Transitions{
+
+public:
+	Transitions();
+	Transitions(const Transitions &n);
+	Transitions(std::vector<Transition> n);
+
+	void print_transitions();
+
+	std::vector<Transition> transitions;
+
+	Transitions operator+(Transition t);
+	Transitions operator+(Transitions t);
+
+};
+
+#endif
+
+
+
+
+
+
+

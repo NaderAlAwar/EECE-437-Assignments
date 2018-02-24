@@ -1,3 +1,6 @@
+#ifndef STATE_H
+#define STATE_H
+
 #include <vector>
 #include <string>
 #include <iostream>
@@ -47,3 +50,4 @@ public:
 	States operator+(States y);
 };
 
+#endif

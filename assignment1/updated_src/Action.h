@@ -1,3 +1,6 @@
+#ifndef ACTION_H
+#define ACTION_H
+
 #include <vector>
 
 class Action{
@@ -32,3 +35,5 @@ private:											//they then have to be copied back to the FSM
 	std::vector<int> variables;
 
 };
+
+#endif

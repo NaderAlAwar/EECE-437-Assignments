@@ -93,4 +93,8 @@ States State::operator+(State x){
 	temp.push_back(*this);
 	temp.push_back(x);
 	return *(new States(temp));
+
+
 }
+
+

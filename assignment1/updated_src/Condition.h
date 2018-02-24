@@ -1,3 +1,6 @@
+#ifndef CONDITION_H
+#define CONDITION_H
+
 #include <vector>
 
 class Condition {
@@ -19,3 +22,5 @@ private:
 	std::vector<int> variables;
 
 };
+
+#endif
