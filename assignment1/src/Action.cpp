@@ -1,7 +1,13 @@
 #include "Action.h"
 #include <iostream>
 
-Action::Action(){}
+Action::Action() {
+
+}
+
+//Action::~Action() {
+//
+//}
 
 Action::Action(void(*func)(std::vector<int> &)) {
 	function = func;
