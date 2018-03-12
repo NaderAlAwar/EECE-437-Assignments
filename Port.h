@@ -1,47 +1,24 @@
 #ifndef PORT_H
 #define PORT_H
 
+#include <string>
+
 class Port
 {
 public:
 	Port();								//true by default
-	Port(bool status);	
+	Port(bool status, std::string input);
 	Port(const Port &);
-	~Port();
+	//~Port();
 	bool isEnabled();					//returns enabled
 	void enable();
 	void disable();
+	std::string getValue();
 	 
 private:
 	bool enabled;
+	std::string value;
 };
 
-Port::Port()
-{
-	enabled = true;
-}
 
-Port::~Port()
-{
-}
-
-Port::Port(bool status) {
-	enabled = status;
-}
-
-Port::Port(const Port &newPort) {
-	enabled = newPort.enabled;
-}
-
-bool Port::isEnabled() {
-	return enabled;
-}
-
-void Port::enable() {
-	enabled = true;
-}
-
-void Port::disable() {
-	enabled = false;
-}
 #endif // !PORT_H
