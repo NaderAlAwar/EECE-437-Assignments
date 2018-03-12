@@ -1,11 +1,12 @@
 #ifndef FSM_H
 #define FSM_H
 
+
 #include "State.h"
 #include "Transition.h"
 #include <vector>
 #include "Port.h"
-
+#include "Interaction.h"
 
 class FSM {
 public:
@@ -21,8 +22,10 @@ public:
 	void drawFSM();
 	void run(int);
 	void reset(const State &);
+	void addInteraction(Interaction &i);
 
 private:
+	std::vector<Interaction> interactions;
 	std::vector<State> myStates;
 	std::vector<Transition> myTransitions;
 	State startState, currentSate;

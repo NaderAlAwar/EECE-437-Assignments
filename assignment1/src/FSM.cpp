@@ -25,6 +25,16 @@ void FSM::printPorts() {
 		
 }
 
+void FSM::addInteraction(Interaction i){
+	interactions.push_back(i);
+}
+
+void FSM::checkInteractions(){
+	for(int i = 0; i<interactions.size(); i++){
+		interactions[i].attemptInteraction();
+	}
+}
+
 void FSM::printStates() {
 	std::cout << "The states are: " << std::endl;
 	for (std::vector<State>::iterator it = myStates.begin(); it != myStates.end(); ++it) {
@@ -33,6 +43,7 @@ void FSM::printStates() {
 }
 
 void FSM::run(int time) {
+
 	bool found = false;
 	while (steps <= time) {		
 		for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {		//check start state of each transition
