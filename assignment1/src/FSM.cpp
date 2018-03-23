@@ -25,15 +25,15 @@ void FSM::printPorts() {
 		
 }
 
-void FSM::addInteraction(Interaction i){
-	interactions.push_back(i);
-}
+// void FSM::addInteraction(Interaction i){
+// 	interactions.push_back(i);
+// }
 
-void FSM::checkInteractions(){
-	for(int i = 0; i<interactions.size(); i++){
-		interactions[i].attemptInteraction();
-	}
-}
+// void FSM::checkInteractions(){
+// 	for(int i = 0; i<interactions.size(); i++){
+// 		interactions[i].attemptInteraction();
+// 	}
+// }
 
 void FSM::printStates() {
 	std::cout << "The states are: " << std::endl;

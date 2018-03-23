@@ -4,23 +4,25 @@
 #include "Port.h"
 #include "Condition.h"
 #include "Action.h"
+#include <vector>
 
 class Interaction{
 
 public:
 	Interaction();
-	Interaction(Port *p1, Port *p2, Condition c, Action a);
+	Interaction(std::vector<Port> *ports, Condition *c, Action *a);
 
 	void attemptInteraction();
+
+	bool isEnabled();
 
 
 
 private:
-	Port *port_1;
-	Port *port_2;
+	vector<Port> *ports;
 
-	Condition condition;
-	Action action;
+	Condition *condition;
+	Action *action;
 
 };
 
