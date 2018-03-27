@@ -1,13 +1,17 @@
-#ifndef INTERACTION_MANAGER_H
-#define INTERACTION_MANAGER_H
+#ifndef SYSTEM_H
+#define SYSTEM_H
 
 #include "Interaction.h"
 #include "FSM.h"
 
-class InteractionManager{
-
-	
-
+class System{
+public:
+	System(const std::vector<Interaction> &);
+	System();
+	void run(int);											//run the system for a number of time steps
+	bool execute();
+private:
+	std::vector<Interaction> myInteractions;
 
 
 };

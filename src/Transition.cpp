@@ -2,6 +2,10 @@
 #include <iostream>
 
 
+Transition::Transition() {
+	startState, endState, condition, action, port = NULL;
+}
+
 Transition::Transition(const State &start, const State &end, const Port *attachedPort, Condition &argCondition, const Action &argAction) {
 	startState = start;
 	endState = end;

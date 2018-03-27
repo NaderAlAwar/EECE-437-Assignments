@@ -9,6 +9,8 @@
 #include "Transitions.h"
 #include "States.h"
 #include "FSM.h"
+#include "Interaction.h"
+#include "System.h"
 
 using namespace std;
 
@@ -34,6 +36,10 @@ void iT(vector<int> &input) {
 
 void rT(vector<int> &input) {
 	input[0] = 0;
+}
+
+void interactionAction(vector<int> &input) {
+	input[0] = 7;
 }
 
 int main() {
@@ -85,13 +91,50 @@ int main() {
 
 	std::vector<Port> ports = {increment, reset};
 
-	FSM m(newgroup, red, group, vars, &ports);
+	FSM m(newgroup, red, group, vars);
 	m.printStates();
 	m.run(1);
 	m.reset(green);
 	m.run(1);
 
+	Condition testing1(l10, input);
+	Condition testing2(testing1);
+	cout << "condition testing1:" << testing1.isTrue() << endl;
+	cout << "condition testing2:" << testing2.isTrue() << endl;
 	int a;
+
+	cout << "************************************************" << endl;
+	cout << "********** NOW TESTING SYSTEM ******************" << endl;
+
+	vector<int> newFSMvars{ 4, 5, 6 };
+	Condition intCondition(l10, newFSMvars);
+	Action intAction(interactionAction);
+	State yellowState("yellow");
+	State blueState("blue");
+	Transition ytob(yellowState, blueState, &increment, lessThan10, incrementT);
+	Transition btoy(blueState, yellowState, &increment, lessThan10, incrementT);
+	vector<Transition> newTransitions = ytob + btoy;
+	vector<State> newStates = yellowState + blueState;
+
+	FSM n(newStates, yellowState, newTransitions, newFSMvars);
+
+
+	Port newp1(true, "for fsm m");
+	Port newp2(true, "for fsm n");
+
+	vector<Port> interactionPorts;
+	newp1.setFSM(&m);
+	newp2.setFSM(&n);
+	interactionPorts.push_back(newp1);
+	interactionPorts.push_back(newp2);
+	Interaction I1(&interactionPorts, &intCondition, &intAction);
+	vector<Interaction> interactions;
+	interactions.push_back(I1);
+	System s1(interactions);
+	s1.execute();
+
+	
+
 	cin >> a;
 	return 0;
 }

@@ -17,7 +17,7 @@ bool Interaction::isEnabled(){
 	}
 
 	if(ports_enabled && condition->isTrue()){
-		action->executeAction();
+		
 		return true;
 	}else{
 		return false;
@@ -25,12 +25,15 @@ bool Interaction::isEnabled(){
 
 }
 
-void Interaction::execute(){
-
-	for(auto i:*ports){
-		i.execute();
+bool Interaction::execute(){
+	if (isEnabled() == true) {
+		for (auto i : *ports) {
+			i.execute();
+		}
+		action->executeAction();
+		return true;
 	}
-
+	return false;
 }
 
 	

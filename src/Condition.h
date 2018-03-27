@@ -8,7 +8,7 @@ public:
 	Condition(bool(*func)(std::vector<int>), std::vector<int> &vars);
 
 	//TODO: change copy constructor
-	// Condition(const Condition &);
+	Condition(const Condition &);
 
 	bool isTrue();
 

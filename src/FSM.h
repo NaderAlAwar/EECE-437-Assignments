@@ -12,7 +12,7 @@ class FSM {
 public:
 	
 	FSM(const std::vector<State> &, const State &, const std::vector<Transition> &, 
-		const std::vector<int> &, const std::vector<Port> *);
+		const std::vector<int> &);
 												//same as assignment pdf. might need to add variables and ports to args.
 												//if not, then we should get them from inside the transitions
 												//when this constructor is called (and supposing we added variables to it), 
@@ -28,13 +28,13 @@ public:
 	bool execute();
 
 	// Providing access to ports
-	State startState, currentSate;
+	State getCurrentState();
 	std::vector<Transition> myTransitions;
 
 private:
+	State startState, currentSate;
 	std::vector<State> myStates;
 	std::vector<int> myVariables;
-	const std::vector<Port> *myPorts;
 	int steps;
 };
 

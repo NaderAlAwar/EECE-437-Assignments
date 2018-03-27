@@ -18,6 +18,7 @@ public:
 
 	// if isEnabled executes FSM
 	bool execute();
+	void setFSM(FSM*);
 	 
 private:
 	bool enabled;
