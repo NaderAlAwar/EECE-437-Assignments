@@ -31,7 +31,7 @@ public:
 	std::vector<Transition> myTransitions;
 
 private:
-	State startState, currentSate;
+	State startState, currentState;
 	std::vector<State> myStates;
 	std::vector<int> myVariables;
 	int steps;

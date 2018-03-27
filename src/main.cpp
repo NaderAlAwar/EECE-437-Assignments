@@ -106,10 +106,11 @@ int main() {
 	Condition intCondition(l10, newFSMvars);
 	Action intAction(interactionAction);
 	State yellowState("yellow");
+	std::cout<<"TESTING:__"<<yellowState.getValue()<<std::endl;
 	State blueState("blue");
 	Transition ytob(yellowState, blueState, &increment, lessThan10, incrementT);
 	Transition btoy(blueState, yellowState, &increment, lessThan10, incrementT);
-	vector<Transition> newTransitions = ytob + btoy;
+	vector<Transition> newTransitions = ytob + btoy + t6;
 	vector<State> newStates = yellowState + blueState;
 
 	FSM n(newStates, yellowState, newTransitions, newFSMvars);
@@ -118,13 +119,13 @@ int main() {
 	Port newp1(true, "for fsm m");
 	Port newp2(true, "for fsm n");
 
-	vector<Port> interactionPorts;
+	vector<Port*> interactionPorts;
 	
 	newp1.setFSM(&m);
 	newp2.setFSM(&n);
 
-	interactionPorts.push_back(newp1);
-	interactionPorts.push_back(newp2);
+	interactionPorts.push_back(&newp1);
+	interactionPorts.push_back(&newp2);
 	
 	Interaction I1(&interactionPorts, &intCondition, &intAction);
 	
