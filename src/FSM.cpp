@@ -1,10 +1,14 @@
 #include "FSM.h"
 
-FSM::FSM(const std::vector<State> & newStates, const State & start, const std::vector<Transition> & newTrans, const std::vector<int> & newVars) {
+FSM::FSM(const std::vector<State> & newStates, const State & start, 
+	const std::vector<Transition> & newTrans, const std::vector<int> & newVars, 
+	const std::vector<Port> *ports_attached) {
 	myStates = newStates;
 	startState = start;
 	myTransitions = newTrans;
 	myVariables = newVars;	
+	myPorts = ports_attached;
+	
 	for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {
 		it->updateActionVariables(newVars);
 		it->updateConditionVariables(newVars);
@@ -13,27 +17,19 @@ FSM::FSM(const std::vector<State> & newStates, const State & start, const std::v
 	steps = 0;
 }
 
-void FSM::printPorts() {
-	std::cout << "The Ports are:" << std::endl;
-	for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {
-		std::cout << "Port " << it->getPort() << " is ";
-		if (it->isPortEnabled())
-			std::cout << "enabled" << std::endl;
-		else
-			std::cout << "disabled" << std::endl;
-	}
-		
-}
-
-// void FSM::addInteraction(Interaction i){
-// 	interactions.push_back(i);
-// }
-
-// void FSM::checkInteractions(){
-// 	for(int i = 0; i<interactions.size(); i++){
-// 		interactions[i].attemptInteraction();
+// void FSM::printPorts() {
+// 	std::cout << "The Ports are:" << std::endl;
+// 	for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {
+// 		std::cout << "Port " << it->getPort() << " is ";
+// 		if (it->isPortEnabled())
+// 			std::cout << "enabled" << std::endl;
+// 		else
+// 			std::cout << "disabled" << std::endl;
 // 	}
+		
 // }
+
+
 
 void FSM::printStates() {
 	std::cout << "The states are: " << std::endl;

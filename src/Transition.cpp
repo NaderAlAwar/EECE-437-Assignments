@@ -2,14 +2,6 @@
 #include <iostream>
 
 
-Transition::Transition() {
-
-}
-
-//Transition::~Transition() {
-//
-//}
-
 Transition::Transition(const State &start, const State &end, const Port &argPort, const Condition &argCondition, const Action &argAction) {
 	startState = start;
 	endState = end;
@@ -18,12 +10,10 @@ Transition::Transition(const State &start, const State &end, const Port &argPort
 	action = argAction;
 }
 
-bool Transition::attemptTransition() {
-	if (port.isEnabled() && condition.isTrue()) {
-		return true;
-	}
-	return false;
+bool Transition::evaluateCondition(){
+	return condition.isTrue();
 }
+
 
 void Transition::printMembers() {
 	std::cout << "start state is " << startState.getValue() << std::endl;
@@ -32,21 +22,21 @@ void Transition::printMembers() {
 	std::cout << "condition is (1 if true 0 if false) " << condition.isTrue() << std::endl;
 }
 
-void Transition::disablePort() {
-	port.disable();
-}
+// void Transition::disablePort() {
+// 	port.disable();
+// }
 
-void Transition::enablePort() {
-	port.enable();
-}
+// void Transition::enablePort() {
+// 	port.enable();
+// }
 
-std::string Transition::getPort() {
-	return port.getValue();
-}
+// std::string Transition::getPort() {
+// 	return port.getValue();
+// }
 
-bool Transition::isPortEnabled() {
-	return port.isEnabled();
-}
+// bool Transition::isPortEnabled() {
+// 	return port.isEnabled();
+// }
 
 void Transition::updateConditionVariables(std::vector<int> inputs) {
 	condition.updateVariables(inputs);

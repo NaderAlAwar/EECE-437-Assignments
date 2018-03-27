@@ -2,17 +2,18 @@
 #define PORT_H
 
 #include <string>
+#include "FSM.h"
 
-class Port
-{
+class Port{
+
 public:
+
 	Port();								//true by default
 	Port(bool status, std::string input);
 	Port(const Port &);
-	//~Port();
+
 	bool isEnabled();					//returns enabled
-	// void enable();
-	// void disable();
+
 	std::string getValue();
 
 	// if isEnabled executes FSM
@@ -21,6 +22,8 @@ public:
 private:
 	bool enabled;
 	std::string value;
+
+	FSM *f;
 };
 
 

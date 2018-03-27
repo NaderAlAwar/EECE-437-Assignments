@@ -5,9 +5,6 @@ Port::Port()
 	enabled = true;
 }
 
-//Port::~Port()
-//{
-//}
 
 Port::Port(bool status, std::string input) {
 	enabled = status;
@@ -20,15 +17,24 @@ Port::Port(const Port &newPort) {
 }
 
 bool Port::isEnabled() {
-	return enabled;
+	for(auto &i: f->myTransitions){
+		
+	}
 }
 
-void Port::enable() {
-	enabled = true;
-}
+// void Port::enable() {
+// 	enabled = true;
+// }
 
-void Port::disable() {
-	enabled = false;
+// void Port::disable() {
+// 	enabled = false;
+// }
+
+
+bool Port::execute(){
+	if(isEnabled()){
+		f.execute();
+	}
 }
 
 std::string Port::getValue() {

@@ -16,15 +16,15 @@ public:
 	Transition(const State &, const State &, const Port &, const Condition &, const Action &);
 	bool attemptTransition();
 	void printMembers();
-	void disablePort();
-	void enablePort();
-	bool isPortEnabled();
+
 	void updateConditionVariables(std::vector<int>);
 	void updateActionVariables(std::vector<int>);
+	
 	State getStartState();
 	State getEndState();
-	Condition* getCondition();
-	Action* getAction();
+	
+	bool evaluateCondition();
+	
 	std::string getPort();
 	std::vector<Transition> operator+(Transition rhs) {
 		std::vector<Transition> answer{ *this,rhs };
@@ -34,8 +34,11 @@ public:
 		lhs.push_back(rhs);
 		return lhs;
 	}
-private:
+
+	// Made public so ports can access
 	State startState, endState;
+
+private:
 	Port port;
 	Condition condition;
 	Action action;

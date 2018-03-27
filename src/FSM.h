@@ -3,34 +3,38 @@
 
 
 #include "State.h"
-#include "Transition.h"
 #include <vector>
-#include "Port.h"
-#include "Interaction.h"
+#include "Transition.h"
+
+class Port; //forward declaration
 
 class FSM {
 public:
-	//FSM();
-	//~FSM();
-	FSM(const std::vector<State> &, const State &, const std::vector<Transition> &, const std::vector<int> &);
+	
+	FSM(const std::vector<State> &, const State &, const std::vector<Transition> &, 
+		const std::vector<int> &, const std::vector<Port> *);
 												//same as assignment pdf. might need to add variables and ports to args.
 												//if not, then we should get them from inside the transitions
 												//when this constructor is called (and supposing we added variables to it), 
 												//the variables should be copied into each Action and Condition inside the transitions
-	void printPorts();
+	// void printPorts();
 	void printStates();
 	void drawFSM();
 	void run(int);
 	void reset(const State &);
-	void addInteraction(Interaction &i);
+
+	//TODO: implement execute, which checks transitions and executes action if
+	// source state ...
+	void execute();
+
+	// Providing access to ports
+	State startState, currentSate;
+	std::vector<Transition> myTransitions;
 
 private:
-	std::vector<Interaction> interactions;
 	std::vector<State> myStates;
-	std::vector<Transition> myTransitions;
-	State startState, currentSate;
 	std::vector<int> myVariables;
-	std::vector<Port> myPorts;
+	const std::vector<Port> *myPorts;
 	int steps;
 };
 
