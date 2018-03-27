@@ -25,7 +25,7 @@ public:
 
 	//TODO: implement execute, which checks transitions and executes action if
 	// source state ...
-	void execute();
+	bool execute();
 
 	// Providing access to ports
 	State startState, currentSate;

@@ -8,10 +8,9 @@ FSM::FSM(const std::vector<State> & newStates, const State & start,
 	myTransitions = newTrans;
 	myVariables = newVars;	
 	myPorts = ports_attached;
-	
+
 	for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {
 		it->updateActionVariables(newVars);
-		it->updateConditionVariables(newVars);
 	}
 	currentSate = startState;
 	steps = 0;
@@ -44,8 +43,7 @@ void FSM::run(int time) {
 	while (steps <= time) {		
 		for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {		//check start state of each transition
 			if (it->getStartState().getValue().compare(currentSate.getValue()) == 0) {				//if current state is equal to start state of this transition
-				it->getCondition()->updateVariables(myVariables);
-				if (it->attemptTransition() == true) {						//if the transition succeeds
+				if (it->evaluateCondition()) {						//if the transition succeeds
 					it->getAction()->updateVariables(myVariables);
 					std::cout << "Variables before: " << std::endl;
 					for (int i = 0; i < myVariables.size(); i++)
@@ -64,9 +62,7 @@ void FSM::run(int time) {
 				}
 			}
 		}
-		for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {	//update each condition
-			it->getCondition()->updateVariables(myVariables);													//every transition
-		}
+	
 
 		if (found == false) {
 			std::cout << "No more transitions possible" << std::endl;
@@ -82,5 +78,11 @@ void FSM::run(int time) {
 void FSM::reset(const State& newState) {
 	startState = newState;
 	currentSate = newState;
+}
+
+
+//TODO: implement execute function here: chooses a transition with source state equal to current state and executes it
+bool FSM::execute(){
+
 }
 

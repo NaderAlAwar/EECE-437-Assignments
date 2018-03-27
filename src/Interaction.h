@@ -18,6 +18,8 @@ public:
 	// Returns whether or not condition true and ports enabled
 	bool isEnabled();
 
+	void execute();
+
 private:
 
 	std::vector<Port> *ports;

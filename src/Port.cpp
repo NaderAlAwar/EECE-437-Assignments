@@ -16,9 +16,10 @@ Port::Port(const Port &newPort) {
 	value = newPort.value;
 }
 
+//TODO: complete port isEnabled function
 bool Port::isEnabled() {
 	for(auto &i: f->myTransitions){
-		
+
 	}
 }
 
@@ -33,7 +34,7 @@ bool Port::isEnabled() {
 
 bool Port::execute(){
 	if(isEnabled()){
-		f.execute();
+		f->execute();
 	}
 }
 
