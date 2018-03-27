@@ -11,9 +11,12 @@ public:
 	Port(const Port &);
 	//~Port();
 	bool isEnabled();					//returns enabled
-	void enable();
-	void disable();
+	// void enable();
+	// void disable();
 	std::string getValue();
+
+	// if isEnabled executes FSM
+	bool execute();
 	 
 private:
 	bool enabled;
