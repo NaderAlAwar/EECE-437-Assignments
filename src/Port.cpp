@@ -22,11 +22,17 @@ void Port::setFSM(FSM* newFSM) {
 
 //TODO: complete port isEnabled function
 bool Port::isEnabled() {
-	for(auto &i: f->myTransitions){
-		if (i.getStartState().getValue().compare(f->getCurrentState().getValue()) == 0) {				//compare start state of transition to current state of FSM
-			return true;
-		}
-	}
+	std::cout<<"-1.1.1:Checking ports from port class"<<std::endl;
+	
+	//TODO: ERROR IS IN THIS NEXT LINE REFERENCING F
+	//std::cout<<f->getCurrentState().getValue()<<std::endl;
+
+	// for(auto i = f->myTransitions.begin(); i != f->myTransitions.end(); i++){
+	// 	if (i->getStartState().getValue() == f->getCurrentState().getValue()) {				//compare start state of transition to current state of FSM
+	// 		std::cout<<"-1.1.2:Found valid transition in port class"<<std::endl;
+	// 		return true;
+	// 	}
+	// }
 	return false;
 }
 

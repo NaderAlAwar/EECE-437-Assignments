@@ -1,8 +1,8 @@
-// Tuesday 03/27/18 at 11:43AM - 34 files in 0.2 secs
+// Tuesday 03/27/18 at 02:56PM - 37 files in 0.16 secs
 
 ## TODO (5)
-1. src/Condition.cpp:8   change copy constructor
-2. src/Condition.h:11    change copy constructor
-3. src/FSM.cpp:84        implement execute function here: chooses a transition with source state equal to current state and executes it
-4. src/FSM.h:26          implement execute, which checks transitions and executes action if
-5. src/Port.cpp:19       complete port isEnabled function
+1. src/Condition.h:10   change copy constructor
+2. src/FSM.cpp:88       implement execute function here: chooses a transition with source state equal to current state and executes it
+3. src/FSM.h:26         implement execute, which checks transitions and executes action if source state ...
+4. src/Port.cpp:23      complete port isEnabled function
+5. src/Port.cpp:27      ERROR IS IN THIS NEXT LINE REFERENCING F

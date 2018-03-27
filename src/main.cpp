@@ -43,11 +43,7 @@ void interactionAction(vector<int> &input) {
 }
 
 int main() {
-	string temp = "lol";
-	State test(temp);
-	cout << test.getValue();
-	test.setValue("nice");
-	cout << test.getValue() << endl;
+	
 	vector<int> input{ 1 };
 
 	Condition lessThan10(l10, input);
@@ -123,14 +119,20 @@ int main() {
 	Port newp2(true, "for fsm n");
 
 	vector<Port> interactionPorts;
+	
 	newp1.setFSM(&m);
 	newp2.setFSM(&n);
+
 	interactionPorts.push_back(newp1);
 	interactionPorts.push_back(newp2);
+	
 	Interaction I1(&interactionPorts, &intCondition, &intAction);
+	
 	vector<Interaction> interactions;
 	interactions.push_back(I1);
+	
 	System s1(interactions);
+	
 	s1.execute();
 
 	
