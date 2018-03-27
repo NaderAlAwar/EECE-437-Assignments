@@ -1,4 +1,8 @@
-// Tuesday 03/27/18 at 09:39AM - 33 files in 0.1 secs
+// Tuesday 03/27/18 at 11:43AM - 34 files in 0.2 secs
 
-## TODO (1)
-1. src/FSM.h:27   implement execute that checks transitions and executes action if
+## TODO (5)
+1. src/Condition.cpp:8   change copy constructor
+2. src/Condition.h:11    change copy constructor
+3. src/FSM.cpp:84        implement execute function here: chooses a transition with source state equal to current state and executes it
+4. src/FSM.h:26          implement execute, which checks transitions and executes action if
+5. src/Port.cpp:19       complete port isEnabled function
