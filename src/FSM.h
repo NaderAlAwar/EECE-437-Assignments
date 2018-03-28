@@ -23,8 +23,7 @@ public:
 	void run(int);
 	void reset(const State &);
 
-	//TODO: implement execute, which checks transitions and executes action if
-	// source state ...
+	//TODO: implement execute, which checks transitions and executes action if source state ...
 	bool execute();
 
 	// Providing access to ports
@@ -32,7 +31,7 @@ public:
 	std::vector<Transition> myTransitions;
 
 private:
-	State startState, currentSate;
+	State startState, currentState;
 	std::vector<State> myStates;
 	std::vector<int> myVariables;
 	int steps;

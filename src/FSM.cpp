@@ -12,7 +12,7 @@ FSM::FSM(const std::vector<State> & newStates, const State & start,
 	for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {
 		it->updateActionVariables(newVars);
 	}
-	currentSate = startState;
+	currentState = startState;
 	steps = 0;
 }
 
@@ -42,17 +42,17 @@ void FSM::run(int time) {
 	bool found = false;
 	while (steps <= time) {		
 		for (std::vector<Transition>::iterator it = myTransitions.begin(); it != myTransitions.end(); ++it) {		//check start state of each transition
-			if (it->getStartState().getValue().compare(currentSate.getValue()) == 0) {				//if current state is equal to start state of this transition
+			if (it->getStartState().getValue().compare(currentState.getValue()) == 0) {				//if current state is equal to start state of this transition
 				if (it->evaluateCondition()) {						//if the transition succeeds
 					it->getAction()->updateVariables(myVariables);
 					std::cout << "Variables before: " << std::endl;
 					for (int i = 0; i < myVariables.size(); i++)
 						std::cout << myVariables[i] << " ";
 					std::cout << std::endl;
-					std::cout << "Moved from " << currentSate.getValue() << " to " << it->getEndState().getValue() << std::endl;
+					std::cout << "Moved from " << currentState.getValue() << " to " << it->getEndState().getValue() << std::endl;
 					myVariables = it->getAction()->executeAction();			//new variables after executing the action
 					it->getAction()->updateVariables(myVariables);
-					currentSate = it->getEndState();						//new current state					
+					currentState = it->getEndState();						//new current state					
 					std::cout << "Variables after: " << std::endl;
 					for (int i = 0; i < myVariables.size(); i++)
 						std::cout << myVariables[i] << " ";
@@ -77,28 +77,28 @@ void FSM::run(int time) {
 
 void FSM::reset(const State& newState) {
 	startState = newState;
-	currentSate = newState;
+	currentState = newState;
 }
 
 State FSM::getCurrentState() {
-	return currentSate;
+	return currentState;
 }
 
 
 //TODO: implement execute function here: chooses a transition with source state equal to current state and executes it
 bool FSM::execute(){
 	for (auto it = myTransitions.begin(); it != myTransitions.end(); it++) {			//check start state of each transition
-		if (it->getStartState().getValue().compare(currentSate.getValue()) == 0) {		//if current state is equal to start state of this transition
+		if (it->getStartState().getValue().compare(currentState.getValue()) == 0) {		//if current state is equal to start state of this transition
 			if (it->evaluateCondition()) {												//if the transition succeeds
 				it->getAction()->updateVariables(myVariables);
 				std::cout << "Variables before: " << std::endl;
 				for (int i = 0; i < myVariables.size(); i++)
 					std::cout << myVariables[i] << " ";
 				std::cout << std::endl;
-				std::cout << "Moved from " << currentSate.getValue() << " to " << it->getEndState().getValue() << std::endl;
+				std::cout << "Moved from " << currentState.getValue() << " to " << it->getEndState().getValue() << std::endl;
 				myVariables = it->getAction()->executeAction();			//new variables after executing the action
 				it->getAction()->updateVariables(myVariables);
-				currentSate = it->getEndState();						//new current state					
+				currentState = it->getEndState();						//new current state					
 				std::cout << "Variables after: " << std::endl;
 				for (int i = 0; i < myVariables.size(); i++)
 					std::cout << myVariables[i] << " ";
