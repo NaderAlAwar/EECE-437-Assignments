@@ -10,7 +10,7 @@ class Interaction{
 
 public:
 	Interaction();
-	Interaction(std::vector<Port> *ports, Condition *c, Action *a);
+	Interaction(std::vector<Port> *ports, Condition *c, Action *a, const std::vector<int> & newVars);
 
 	// Attempts interaction and returns boolean to represent result of attempt
 	bool attemptInteraction();
@@ -19,11 +19,11 @@ public:
 	bool isEnabled();
 
 	bool execute();
-
+	std::vector<Port> *ports;
 private:
 
-	std::vector<Port> *ports;
-
+	
+	std::vector<int> myVariables;
 	Condition *condition;
 	Action *action;
 

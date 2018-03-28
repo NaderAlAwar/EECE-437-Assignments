@@ -1,5 +1,5 @@
 #include "Port.h"
-
+#include "Transition.h"
 Port::Port()
 {
 	enabled = true;
@@ -9,6 +9,7 @@ Port::Port()
 Port::Port(bool status, std::string input) {
 	enabled = status;
 	value = input;
+	f = NULL;
 }
 
 Port::Port(const Port &newPort) {
@@ -22,8 +23,8 @@ void Port::setFSM(FSM* newFSM) {
 
 //TODO: complete port isEnabled function
 bool Port::isEnabled() {
-	for(auto &i: f->myTransitions){
-		if (i.getStartState().getValue().compare(f->getCurrentState().getValue()) == 0) {				//compare start state of transition to current state of FSM
+	for(std::vector<Transition>::iterator it = f->myTransitions.begin(); it != f->myTransitions.end(); ++it){
+		if (it->getStartState().getValue().compare(f->getCurrentState().getValue()) == 0) {				//compare start state of transition to current state of FSM
 			return true;
 		}
 	}

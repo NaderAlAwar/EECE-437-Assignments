@@ -19,12 +19,14 @@ public:
 	// if isEnabled executes FSM
 	bool execute();
 	void setFSM(FSM*);
-	 
+	
+	FSM * f;
 private:
+
 	bool enabled;
 	std::string value;
 
-	FSM *f;
+	
 };
 
 

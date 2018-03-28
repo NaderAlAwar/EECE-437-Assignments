@@ -39,7 +39,7 @@ void rT(vector<int> &input) {
 }
 
 void interactionAction(vector<int> &input) {
-	input[0] = 7;
+	input[0] = 32;
 }
 
 int main() {
@@ -123,14 +123,18 @@ int main() {
 	Port newp2(true, "for fsm n");
 
 	vector<Port> interactionPorts;
-	newp1.setFSM(&m);
-	newp2.setFSM(&n);
-	interactionPorts.push_back(newp1);
+	interactionPorts.push_back(newp1);										
 	interactionPorts.push_back(newp2);
-	Interaction I1(&interactionPorts, &intCondition, &intAction);
+	interactionPorts.at(0).setFSM(&m);
+	interactionPorts.at(1).setFSM(&n);
+
+	vector<int> intVars{ 7,8,9 };
+	Interaction I1(&interactionPorts, &intCondition, &intAction, intVars);
+
 	vector<Interaction> interactions;
 	interactions.push_back(I1);
 	System s1(interactions);
+
 	s1.execute();
 
 	
